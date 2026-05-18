@@ -105,6 +105,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 20,
     alignItems: "center",
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    elevation: 2,
   },
   emptyHeader: {
     fontSize: 16,
@@ -118,7 +123,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   alternateBox: {
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: "#f1f5f9",
     padding: 16,
     borderRadius: 12,
     width: "100%",
@@ -146,3 +151,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+

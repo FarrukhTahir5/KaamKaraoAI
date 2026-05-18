@@ -131,6 +131,11 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderWidth: 1,
     marginBottom: 24,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    elevation: 2,
   },
   cardHeader: {
     fontSize: 18,
@@ -144,7 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   input: {
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: "#f1f5f9",
     borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 12,
@@ -172,6 +177,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 14,
     marginVertical: 6,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.03,
+    shadowRadius: 6,
+    elevation: 1,
   },
   demoTitle: {
     fontSize: 13,
@@ -185,3 +195,4 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
 });
+

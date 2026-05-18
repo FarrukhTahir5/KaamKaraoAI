@@ -114,7 +114,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.background} />
+      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
       
       {/* Dynamic Navigation Header */}
       <View style={styles.headerBar}>
@@ -159,12 +159,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 16,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.03,
+    shadowRadius: 6,
+    elevation: 1,
   },
   backBtn: {
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: "rgba(255,255,255,0.05)",
+    backgroundColor: "#f1f5f9",
   },
   backText: {
     color: colors.text,
@@ -181,7 +186,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: "rgba(239, 68, 68, 0.15)",
+    backgroundColor: "rgba(186, 26, 26, 0.08)",
   },
   resetText: {
     color: colors.error,

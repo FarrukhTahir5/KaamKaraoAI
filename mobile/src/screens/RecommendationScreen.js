@@ -88,12 +88,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   card: {
-    backgroundColor: "#112620", // Deep emerald tint
+    backgroundColor: "rgba(22, 163, 74, 0.06)",
     borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 16,
     padding: 20,
     marginBottom: 20,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    elevation: 2,
   },
   scoreRow: {
     flexDirection: "row",
@@ -118,7 +123,7 @@ const styles = StyleSheet.create({
   },
   scoreBox: {
     alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.05)",
+    backgroundColor: "#f1f5f9",
     padding: 10,
     borderRadius: 12,
     minWidth: 80,

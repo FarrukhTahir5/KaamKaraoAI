@@ -1,413 +1,681 @@
 [
-  {
-    "id": "p001",
-    "name": "Ali AC Services",
-    "owner_name": "Muhammad Ali",
-    "phone": "+92-333-5112233",
-    "service_type": "AC Technician",
-    "areas": ["G-13", "G-11", "F-11", "G-14"],
-    "base_location": "G-11 Islamabad",
-    "distance_map": {
-      "G-13": 2.1,
-      "G-11": 0.8,
-      "F-11": 3.2,
-      "G-14": 1.5
+    {
+        "id": "p001",
+        "name": "Ali AC Services",
+        "service_type": "AC Technician",
+        "areas": [
+            "G-13",
+            "G-11",
+            "F-11",
+            "G-10"
+        ],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.1,
+            "G-11": 0.8,
+            "F-11": 3.2,
+            "G-10": 1.5,
+            "F-10": 2.8,
+            "Bahria Town": 18.5,
+            "DHA": 22.0,
+            "I-8": 9.5,
+            "Blue Area": 8.0,
+            "Rawalpindi": 15.0
+        },
+        "rating": 4.8,
+        "available_slots": [
+            "10:00 AM",
+            "2:00 PM",
+            "5:00 PM"
+        ],
+        "completion_rate": 94.0,
+        "response_time_min": 8,
+        "estimated_charges": "Rs. 1500 - Rs. 2000",
+        "emergency_available": false
     },
-    "rating": 4.8,
-    "total_reviews": 87,
-    "available_slots": ["10:00 AM", "2:00 PM", "5:00 PM"],
-    "completion_rate": 94,
-    "response_time_min": 8,
-    "estimated_charges": "Rs. 1500 - Rs. 2000",
-    "emergency_available": false,
-    "experience_years": 7,
-    "verified": true,
-    "profile_image": "ali_ac.jpg",
-    "languages": ["Urdu", "Punjabi"],
-    "joined_date": "2022-03-15"
-  },
-  {
-    "id": "p002",
-    "name": "Rehman Electricals",
-    "owner_name": "Abdul Rehman",
-    "phone": "+92-300-4456789",
-    "service_type": "Electrician",
-    "areas": ["G-13", "G-10", "G-9", "I-10"],
-    "base_location": "G-10 Islamabad",
-    "distance_map": {
-      "G-13": 3.5,
-      "G-10": 0.5,
-      "G-9": 1.2,
-      "I-10": 2.8
+    {
+        "id": "p002",
+        "name": "Umar Cooling & AC Repair",
+        "service_type": "AC Technician",
+        "areas": [
+            "G-13",
+            "G-10",
+            "F-10",
+            "G-11"
+        ],
+        "base_location": "G-10 Islamabad",
+        "distance_map": {
+            "G-13": 3.4,
+            "G-11": 1.2,
+            "F-11": 2.9,
+            "G-10": 1.0,
+            "F-10": 2.6,
+            "Bahria Town": 19.0,
+            "DHA": 21.5,
+            "I-8": 8.2,
+            "Blue Area": 7.5,
+            "Rawalpindi": 14.5
+        },
+        "rating": 4.6,
+        "available_slots": [
+            "9:30 AM",
+            "1:00 PM",
+            "4:30 PM"
+        ],
+        "completion_rate": 90.0,
+        "response_time_min": 12,
+        "estimated_charges": "Rs. 1200 - Rs. 1800",
+        "emergency_available": true
     },
-    "rating": 4.6,
-    "total_reviews": 112,
-    "available_slots": ["9:00 AM", "11:00 AM", "3:00 PM", "6:00 PM"],
-    "completion_rate": 91,
-    "response_time_min": 12,
-    "estimated_charges": "Rs. 800 - Rs. 2500",
-    "emergency_available": true,
-    "experience_years": 10,
-    "verified": true,
-    "profile_image": "rehman_elec.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2021-11-01"
-  },
-  {
-    "id": "p003",
-    "name": "Ustad Plumbers",
-    "owner_name": "Ghulam Nabi",
-    "phone": "+92-345-7890123",
-    "service_type": "Plumber",
-    "areas": ["F-10", "F-11", "F-7", "F-8"],
-    "base_location": "F-10 Islamabad",
-    "distance_map": {
-      "F-10": 0.3,
-      "F-11": 1.8,
-      "F-7": 4.1,
-      "F-8": 3.0
+    {
+        "id": "p003",
+        "name": "Fast Cool Repair",
+        "service_type": "AC Technician",
+        "areas": [
+            "G-13",
+            "F-10",
+            "F-11",
+            "G-11"
+        ],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.8,
+            "G-11": 2.2,
+            "F-11": 0.7,
+            "G-10": 2.5,
+            "F-10": 2.2,
+            "Bahria Town": 21.0,
+            "DHA": 23.5,
+            "I-8": 11.0,
+            "Blue Area": 9.0,
+            "Rawalpindi": 16.5
+        },
+        "rating": 4.2,
+        "available_slots": [
+            "11:00 AM",
+            "3:00 PM",
+            "6:00 PM"
+        ],
+        "completion_rate": 82.0,
+        "response_time_min": 18,
+        "estimated_charges": "Rs. 1000 - Rs. 1600",
+        "emergency_available": false
     },
-    "rating": 4.5,
-    "total_reviews": 65,
-    "available_slots": ["8:00 AM", "12:00 PM", "4:00 PM"],
-    "completion_rate": 89,
-    "response_time_min": 15,
-    "estimated_charges": "Rs. 1000 - Rs. 3000",
-    "emergency_available": true,
-    "experience_years": 12,
-    "verified": true,
-    "profile_image": "ustad_plumber.jpg",
-    "languages": ["Urdu", "Pashto"],
-    "joined_date": "2022-01-20"
-  },
-  {
-    "id": "p004",
-    "name": "Bright Minds Tutoring",
-    "owner_name": "Ayesha Siddiqui",
-    "phone": "+92-321-9988776",
-    "service_type": "Tutor",
-    "areas": ["F-10", "F-8", "G-6", "Blue Area"],
-    "base_location": "F-8 Islamabad",
-    "distance_map": {
-      "F-10": 2.0,
-      "F-8": 0.4,
-      "G-6": 3.5,
-      "Blue Area": 4.0
+    {
+        "id": "p004",
+        "name": "Sajid Electrician",
+        "service_type": "Electrician",
+        "areas": [
+            "G-13",
+            "G-11",
+            "G-10",
+            "F-10",
+            "F-11"
+        ],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.5,
+            "G-11": 1.8,
+            "F-11": 2.5,
+            "G-10": 2.2,
+            "F-10": 3.0,
+            "Bahria Town": 20.0,
+            "DHA": 24.0,
+            "I-8": 10.5,
+            "Blue Area": 9.2,
+            "Rawalpindi": 16.0
+        },
+        "rating": 4.9,
+        "available_slots": [
+            "9:00 AM",
+            "11:30 AM",
+            "2:30 PM",
+            "6:00 PM"
+        ],
+        "completion_rate": 96.0,
+        "response_time_min": 5,
+        "estimated_charges": "Rs. 800 - Rs. 1500",
+        "emergency_available": true
     },
-    "rating": 4.9,
-    "total_reviews": 143,
-    "available_slots": ["3:00 PM", "5:00 PM", "7:00 PM"],
-    "completion_rate": 97,
-    "response_time_min": 20,
-    "estimated_charges": "Rs. 1500 - Rs. 3000 per session",
-    "emergency_available": false,
-    "experience_years": 5,
-    "verified": true,
-    "subjects": ["Mathematics", "Physics", "Chemistry"],
-    "grades": ["Grade 8", "Grade 9", "Grade 10", "O-Level"],
-    "profile_image": "ayesha_tutor.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2023-06-10"
-  },
-  {
-    "id": "p005",
-    "name": "Zara Beauty at Home",
-    "owner_name": "Zara Khan",
-    "phone": "+92-311-2233445",
-    "service_type": "Beautician",
-    "areas": ["G-13", "G-14", "G-15", "Bahria Town"],
-    "base_location": "G-13 Islamabad",
-    "distance_map": {
-      "G-13": 0.2,
-      "G-14": 1.1,
-      "G-15": 2.3,
-      "Bahria Town": 8.5
+    {
+        "id": "p005",
+        "name": "Islamabad Electric Works",
+        "service_type": "Electrician",
+        "areas": [
+            "F-10",
+            "F-11",
+            "Blue Area",
+            "G-11"
+        ],
+        "base_location": "F-10 Islamabad",
+        "distance_map": {
+            "G-13": 4.2,
+            "G-11": 2.5,
+            "F-11": 1.8,
+            "G-10": 2.0,
+            "F-10": 0.6,
+            "Bahria Town": 18.0,
+            "DHA": 20.5,
+            "I-8": 7.8,
+            "Blue Area": 5.0,
+            "Rawalpindi": 13.0
+        },
+        "rating": 4.5,
+        "available_slots": [
+            "10:30 AM",
+            "1:30 PM",
+            "4:00 PM"
+        ],
+        "completion_rate": 89.0,
+        "response_time_min": 15,
+        "estimated_charges": "Rs. 1000 - Rs. 2000",
+        "emergency_available": true
     },
-    "rating": 4.7,
-    "total_reviews": 98,
-    "available_slots": ["10:00 AM", "1:00 PM", "4:00 PM"],
-    "completion_rate": 96,
-    "response_time_min": 10,
-    "estimated_charges": "Rs. 2000 - Rs. 8000",
-    "emergency_available": false,
-    "experience_years": 6,
-    "verified": true,
-    "services_offered": ["Facial", "Mehndi", "Bridal Makeup", "Hair Styling", "Manicure", "Pedicure"],
-    "profile_image": "zara_beauty.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2022-09-05"
-  },
-  {
-    "id": "p006",
-    "name": "CoolBreeze AC & Fridge",
-    "owner_name": "Tariq Mehmood",
-    "phone": "+92-333-8877665",
-    "service_type": "AC Technician",
-    "areas": ["I-8", "I-9", "I-10", "H-11"],
-    "base_location": "I-8 Islamabad",
-    "distance_map": {
-      "I-8": 0.6,
-      "I-9": 1.3,
-      "I-10": 2.1,
-      "H-11": 3.4
+    {
+        "id": "p006",
+        "name": "Rawal Plumbers & Geysers",
+        "service_type": "Plumber",
+        "areas": [
+            "Rawalpindi",
+            "DHA",
+            "Bahria Town"
+        ],
+        "base_location": "Saddar Rawalpindi",
+        "distance_map": {
+            "G-13": 14.0,
+            "G-11": 13.5,
+            "F-11": 15.0,
+            "G-10": 12.5,
+            "F-10": 13.0,
+            "Bahria Town": 6.5,
+            "DHA": 5.0,
+            "I-8": 8.0,
+            "Blue Area": 11.5,
+            "Rawalpindi": 1.2
+        },
+        "rating": 4.7,
+        "available_slots": [
+            "8:30 AM",
+            "12:00 PM",
+            "3:30 PM",
+            "7:00 PM"
+        ],
+        "completion_rate": 93.0,
+        "response_time_min": 10,
+        "estimated_charges": "Rs. 1500 - Rs. 2500",
+        "emergency_available": true
     },
-    "rating": 4.4,
-    "total_reviews": 54,
-    "available_slots": ["9:00 AM", "1:00 PM", "4:00 PM"],
-    "completion_rate": 88,
-    "response_time_min": 20,
-    "estimated_charges": "Rs. 1200 - Rs. 2500",
-    "emergency_available": true,
-    "experience_years": 4,
-    "verified": true,
-    "profile_image": "coolbreeze_ac.jpg",
-    "languages": ["Urdu"],
-    "joined_date": "2023-02-28"
-  },
-  {
-    "id": "p007",
-    "name": "Rawalpindi Wiring Experts",
-    "owner_name": "Asif Iqbal",
-    "phone": "+92-300-1122334",
-    "service_type": "Electrician",
-    "areas": ["Saddar Rawalpindi", "Raja Bazaar", "Chandni Chowk", "DHA"],
-    "base_location": "Saddar Rawalpindi",
-    "distance_map": {
-      "Saddar Rawalpindi": 0.4,
-      "Raja Bazaar": 1.0,
-      "Chandni Chowk": 1.5,
-      "DHA": 6.2
+    {
+        "id": "p007",
+        "name": "Hamza Plumber G-13",
+        "service_type": "Plumber",
+        "areas": [
+            "G-13",
+            "G-11",
+            "G-10"
+        ],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.8,
+            "G-11": 2.0,
+            "F-11": 3.0,
+            "G-10": 2.5,
+            "F-10": 3.5,
+            "Bahria Town": 21.0,
+            "DHA": 24.5,
+            "I-8": 11.5,
+            "Blue Area": 10.0,
+            "Rawalpindi": 17.0
+        },
+        "rating": 4.4,
+        "available_slots": [
+            "10:00 AM",
+            "1:00 PM",
+            "4:00 PM"
+        ],
+        "completion_rate": 88.0,
+        "response_time_min": 14,
+        "estimated_charges": "Rs. 800 - Rs. 1500",
+        "emergency_available": false
     },
-    "rating": 4.3,
-    "total_reviews": 79,
-    "available_slots": ["8:00 AM", "11:00 AM", "2:00 PM", "5:00 PM"],
-    "completion_rate": 85,
-    "response_time_min": 18,
-    "estimated_charges": "Rs. 700 - Rs. 2000",
-    "emergency_available": true,
-    "experience_years": 15,
-    "verified": false,
-    "profile_image": "asif_electric.jpg",
-    "languages": ["Urdu", "Punjabi"],
-    "joined_date": "2021-05-12"
-  },
-  {
-    "id": "p008",
-    "name": "Bahria Plumbing Pro",
-    "owner_name": "Nadeem Akbar",
-    "phone": "+92-345-5566778",
-    "service_type": "Plumber",
-    "areas": ["Bahria Town", "DHA", "Rawalpindi"],
-    "base_location": "Bahria Town Rawalpindi",
-    "distance_map": {
-      "Bahria Town": 0.7,
-      "DHA": 4.5,
-      "Rawalpindi": 12.0
+    {
+        "id": "p008",
+        "name": "Maths & Physics Mastermind",
+        "service_type": "Tutor",
+        "areas": [
+            "F-10",
+            "F-11",
+            "G-11",
+            "G-10"
+        ],
+        "base_location": "F-10 Islamabad",
+        "distance_map": {
+            "G-13": 3.8,
+            "G-11": 2.1,
+            "F-11": 1.5,
+            "G-10": 1.8,
+            "F-10": 0.5,
+            "Bahria Town": 18.5,
+            "DHA": 21.0,
+            "I-8": 8.0,
+            "Blue Area": 5.5,
+            "Rawalpindi": 14.0
+        },
+        "rating": 4.9,
+        "available_slots": [
+            "3:00 PM",
+            "5:00 PM",
+            "7:00 PM"
+        ],
+        "completion_rate": 97.0,
+        "response_time_min": 25,
+        "estimated_charges": "Rs. 8000 - Rs. 12000 / month",
+        "emergency_available": false
     },
-    "rating": 4.6,
-    "total_reviews": 91,
-    "available_slots": ["9:00 AM", "12:00 PM", "3:00 PM", "6:00 PM"],
-    "completion_rate": 93,
-    "response_time_min": 10,
-    "estimated_charges": "Rs. 1200 - Rs. 4000",
-    "emergency_available": true,
-    "experience_years": 8,
-    "verified": true,
-    "profile_image": "nadeem_plumber.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2022-07-18"
-  },
-  {
-    "id": "p009",
-    "name": "TopMark Academy (Home Tuition)",
-    "owner_name": "Bilal Hassan",
-    "phone": "+92-321-4455667",
-    "service_type": "Tutor",
-    "areas": ["Bahria Town", "DHA", "G-13", "G-14"],
-    "base_location": "Bahria Town Rawalpindi",
-    "distance_map": {
-      "Bahria Town": 0.5,
-      "DHA": 3.0,
-      "G-13": 14.0,
-      "G-14": 13.5
+    {
+        "id": "p009",
+        "name": "Glow Home Salon & Bridal",
+        "service_type": "Beautician",
+        "areas": [
+            "G-13",
+            "F-11",
+            "F-10",
+            "G-11"
+        ],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.5,
+            "G-11": 1.9,
+            "F-11": 0.5,
+            "G-10": 2.8,
+            "F-10": 2.0,
+            "Bahria Town": 21.5,
+            "DHA": 23.0,
+            "I-8": 11.5,
+            "Blue Area": 9.5,
+            "Rawalpindi": 16.0
+        },
+        "rating": 4.8,
+        "available_slots": [
+            "11:00 AM",
+            "2:00 PM",
+            "5:00 PM"
+        ],
+        "completion_rate": 95.0,
+        "response_time_min": 15,
+        "estimated_charges": "Rs. 3000 - Rs. 7000",
+        "emergency_available": false
     },
-    "rating": 4.7,
-    "total_reviews": 108,
-    "available_slots": ["2:00 PM", "4:00 PM", "6:00 PM", "8:00 PM"],
-    "completion_rate": 95,
-    "response_time_min": 25,
-    "estimated_charges": "Rs. 2000 - Rs. 4000 per session",
-    "emergency_available": false,
-    "experience_years": 8,
-    "verified": true,
-    "subjects": ["Mathematics", "Biology", "English", "Urdu"],
-    "grades": ["Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Matric"],
-    "profile_image": "bilal_tutor.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2021-08-25"
-  },
-  {
-    "id": "p010",
-    "name": "Noor Bridal Studio (Home)",
-    "owner_name": "Noor Fatima",
-    "phone": "+92-311-9988001",
-    "service_type": "Beautician",
-    "areas": ["F-10", "F-11", "F-7", "G-6"],
-    "base_location": "F-10 Islamabad",
-    "distance_map": {
-      "F-10": 0.9,
-      "F-11": 2.0,
-      "F-7": 3.8,
-      "G-6": 4.5
+    {
+        "id": "p010",
+        "name": "Bashir Pipe & Sanitary Shop",
+        "service_type": "Plumber",
+        "areas": [
+            "G-11",
+            "G-10",
+            "F-10",
+            "F-11"
+        ],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.0,
+            "G-11": 0.5,
+            "F-11": 2.6,
+            "G-10": 1.2,
+            "F-10": 2.5,
+            "Bahria Town": 18.0,
+            "DHA": 20.5,
+            "I-8": 8.5,
+            "Blue Area": 7.0,
+            "Rawalpindi": 14.0
+        },
+        "rating": 4.1,
+        "available_slots": [
+            "9:00 AM",
+            "12:00 PM",
+            "3:00 PM"
+        ],
+        "completion_rate": 80.0,
+        "response_time_min": 20,
+        "estimated_charges": "Rs. 1000 - Rs. 1800",
+        "emergency_available": true
     },
-    "rating": 4.9,
-    "total_reviews": 176,
-    "available_slots": ["11:00 AM", "2:00 PM", "5:00 PM"],
-    "completion_rate": 98,
-    "response_time_min": 12,
-    "estimated_charges": "Rs. 3000 - Rs. 15000",
-    "emergency_available": false,
-    "experience_years": 9,
-    "verified": true,
-    "services_offered": ["Bridal Makeup", "Party Makeup", "Mehndi", "Facial", "Threading", "Waxing", "Hair Color"],
-    "profile_image": "noor_bridal.jpg",
-    "languages": ["Urdu", "English", "Punjabi"],
-    "joined_date": "2021-04-03"
-  },
-  {
-    "id": "p011",
-    "name": "Iqbal AC & Cooling Solutions",
-    "owner_name": "Iqbal Hussain",
-    "phone": "+92-333-2211009",
-    "service_type": "AC Technician",
-    "areas": ["Bahria Town", "DHA", "Rawalpindi"],
-    "base_location": "DHA Islamabad",
-    "distance_map": {
-      "Bahria Town": 5.0,
-      "DHA": 0.9,
-      "Rawalpindi": 9.0
+    {
+        "id": "p011",
+        "name": "Quick Fix Plumbers",
+        "service_type": "Plumber",
+        "areas": [
+            "G-13",
+            "G-11",
+            "G-10",
+            "F-11"
+        ],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.3,
+            "G-11": 2.2,
+            "F-11": 3.1,
+            "G-10": 2.8,
+            "F-10": 3.9,
+            "Bahria Town": 21.5,
+            "DHA": 25.0,
+            "I-8": 12.0,
+            "Blue Area": 10.5,
+            "Rawalpindi": 17.5
+        },
+        "rating": 4.6,
+        "available_slots": [
+            "8:00 AM",
+            "11:00 AM",
+            "2:00 PM",
+            "5:00 PM"
+        ],
+        "completion_rate": 91.0,
+        "response_time_min": 6,
+        "estimated_charges": "Rs. 1200 - Rs. 2000",
+        "emergency_available": true
     },
-    "rating": 4.5,
-    "total_reviews": 62,
-    "available_slots": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM"],
-    "completion_rate": 90,
-    "response_time_min": 14,
-    "estimated_charges": "Rs. 1800 - Rs. 3500",
-    "emergency_available": true,
-    "experience_years": 6,
-    "verified": true,
-    "profile_image": "iqbal_ac.jpg",
-    "languages": ["Urdu"],
-    "joined_date": "2022-11-11"
-  },
-  {
-    "id": "p012",
-    "name": "Saif Electric Works",
-    "owner_name": "Saifullah Khan",
-    "phone": "+92-300-6677889",
-    "service_type": "Electrician",
-    "areas": ["F-10", "F-11", "F-7", "F-8"],
-    "base_location": "F-11 Islamabad",
-    "distance_map": {
-      "F-10": 1.6,
-      "F-11": 0.4,
-      "F-7": 2.9,
-      "F-8": 2.1
+    {
+        "id": "p012",
+        "name": "Smart Electric Services",
+        "service_type": "Electrician",
+        "areas": [
+            "I-8",
+            "Blue Area",
+            "DHA",
+            "Bahria Town"
+        ],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.5,
+            "G-11": 10.0,
+            "F-11": 11.2,
+            "G-10": 8.8,
+            "F-10": 8.5,
+            "Bahria Town": 12.0,
+            "DHA": 11.0,
+            "I-8": 0.6,
+            "Blue Area": 3.5,
+            "Rawalpindi": 8.0
+        },
+        "rating": 4.7,
+        "available_slots": [
+            "10:00 AM",
+            "1:00 PM",
+            "4:00 PM",
+            "7:00 PM"
+        ],
+        "completion_rate": 93.0,
+        "response_time_min": 9,
+        "estimated_charges": "Rs. 1000 - Rs. 2500",
+        "emergency_available": true
     },
-    "rating": 4.7,
-    "total_reviews": 134,
-    "available_slots": ["8:00 AM", "10:00 AM", "1:00 PM", "4:00 PM"],
-    "completion_rate": 92,
-    "response_time_min": 10,
-    "estimated_charges": "Rs. 1000 - Rs. 3500",
-    "emergency_available": true,
-    "experience_years": 11,
-    "verified": true,
-    "profile_image": "saif_electric.jpg",
-    "languages": ["Urdu", "Pashto"],
-    "joined_date": "2021-09-07"
-  },
-  {
-    "id": "p013",
-    "name": "Quick Fix Plumbing",
-    "owner_name": "Rizwan Butt",
-    "phone": "+92-345-1122345",
-    "service_type": "Plumber",
-    "areas": ["G-13", "G-14", "G-11", "G-10"],
-    "base_location": "G-13 Islamabad",
-    "distance_map": {
-      "G-13": 0.3,
-      "G-14": 1.2,
-      "G-11": 2.5,
-      "G-10": 3.0
+    {
+        "id": "p013",
+        "name": "Science & English Academy",
+        "service_type": "Tutor",
+        "areas": [
+            "G-13",
+            "G-11",
+            "G-10"
+        ],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.6,
+            "G-11": 1.9,
+            "F-11": 2.8,
+            "G-10": 2.4,
+            "F-10": 3.6,
+            "Bahria Town": 21.0,
+            "DHA": 24.0,
+            "I-8": 11.0,
+            "Blue Area": 10.0,
+            "Rawalpindi": 16.5
+        },
+        "rating": 4.5,
+        "available_slots": [
+            "4:00 PM",
+            "6:00 PM"
+        ],
+        "completion_rate": 90.0,
+        "response_time_min": 30,
+        "estimated_charges": "Rs. 6000 - Rs. 10000 / month",
+        "emergency_available": false
     },
-    "rating": 4.4,
-    "total_reviews": 47,
-    "available_slots": ["9:00 AM", "12:00 PM", "5:00 PM"],
-    "completion_rate": 87,
-    "response_time_min": 20,
-    "estimated_charges": "Rs. 800 - Rs. 2500",
-    "emergency_available": false,
-    "experience_years": 5,
-    "verified": true,
-    "profile_image": "rizwan_plumber.jpg",
-    "languages": ["Urdu", "Punjabi"],
-    "joined_date": "2023-01-14"
-  },
-  {
-    "id": "p014",
-    "name": "Sara's Home Beauty Services",
-    "owner_name": "Sara Malik",
-    "phone": "+92-311-5544332",
-    "service_type": "Beautician",
-    "areas": ["Bahria Town", "DHA", "Rawalpindi"],
-    "base_location": "Bahria Town Rawalpindi",
-    "distance_map": {
-      "Bahria Town": 0.3,
-      "DHA": 4.0,
-      "Rawalpindi": 13.0
+    {
+        "id": "p014",
+        "name": "DHA Beauty Express",
+        "service_type": "Beautician",
+        "areas": [
+            "DHA",
+            "Bahria Town",
+            "Rawalpindi"
+        ],
+        "base_location": "DHA Phase 2",
+        "distance_map": {
+            "G-13": 24.0,
+            "G-11": 22.5,
+            "F-11": 24.0,
+            "G-10": 21.5,
+            "F-10": 22.0,
+            "Bahria Town": 4.5,
+            "DHA": 0.8,
+            "I-8": 14.0,
+            "Blue Area": 17.5,
+            "Rawalpindi": 9.0
+        },
+        "rating": 4.7,
+        "available_slots": [
+            "10:00 AM",
+            "1:00 PM",
+            "4:00 PM",
+            "7:00 PM"
+        ],
+        "completion_rate": 94.0,
+        "response_time_min": 12,
+        "estimated_charges": "Rs. 4000 - Rs. 9000",
+        "emergency_available": false
     },
-    "rating": 4.6,
-    "total_reviews": 83,
-    "available_slots": ["10:00 AM", "12:00 PM", "3:00 PM", "6:00 PM"],
-    "completion_rate": 94,
-    "response_time_min": 15,
-    "estimated_charges": "Rs. 2500 - Rs. 10000",
-    "emergency_available": false,
-    "experience_years": 7,
-    "verified": true,
-    "services_offered": ["Facial", "Mehndi", "Bridal Makeup", "Party Makeup", "Hair Styling", "Waxing"],
-    "profile_image": "sara_beauty.jpg",
-    "languages": ["Urdu", "English"],
-    "joined_date": "2022-05-22"
-  },
-  {
-    "id": "p015",
-    "name": "Hafiz Tuition Center (Home Visits)",
-    "owner_name": "Hafiz Usman",
-    "phone": "+92-321-7788990",
-    "service_type": "Tutor",
-    "areas": ["G-9", "G-10", "G-11", "I-8"],
-    "base_location": "G-9 Islamabad",
-    "distance_map": {
-      "G-9": 0.6,
-      "G-10": 1.4,
-      "G-11": 2.8,
-      "I-8": 3.5
+    {
+        "id": "p015",
+        "name": "Expert AC & Heating Solutions",
+        "service_type": "AC Technician",
+        "areas": [
+            "I-8",
+            "Blue Area",
+            "G-10",
+            "DHA"
+        ],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.0,
+            "G-11": 9.5,
+            "F-11": 10.8,
+            "G-10": 8.0,
+            "F-10": 8.2,
+            "Bahria Town": 13.0,
+            "DHA": 12.0,
+            "I-8": 0.5,
+            "Blue Area": 4.0,
+            "Rawalpindi": 7.5
+        },
+        "rating": 4.8,
+        "available_slots": [
+            "10:30 AM",
+            "2:30 PM",
+            "5:30 PM"
+        ],
+        "completion_rate": 96.0,
+        "response_time_min": 7,
+        "estimated_charges": "Rs. 1800 - Rs. 2500",
+        "emergency_available": true
     },
-    "rating": 4.5,
-    "total_reviews": 60,
-    "available_slots": ["3:00 PM", "5:00 PM", "7:00 PM"],
-    "completion_rate": 90,
-    "response_time_min": 30,
-    "estimated_charges": "Rs. 1200 - Rs. 2500 per session",
-    "emergency_available": false,
-    "experience_years": 4,
-    "verified": false,
-    "subjects": ["Islamiat", "Pakistan Studies", "Urdu", "Mathematics"],
-    "grades": ["Grade 5", "Grade 6", "Grade 7", "Grade 8"],
-    "profile_image": "hafiz_tutor.jpg",
-    "languages": ["Urdu", "Punjabi"],
-    "joined_date": "2023-08-01"
-  }
+    {
+        "id": "p016",
+        "name": "Zahid Electric Repair",
+        "service_type": "Electrician",
+        "areas": [
+            "G-13",
+            "F-11",
+            "G-11"
+        ],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.2,
+            "G-11": 1.7,
+            "F-11": 0.5,
+            "G-10": 2.4,
+            "F-10": 2.0,
+            "Bahria Town": 21.0,
+            "DHA": 23.5,
+            "I-8": 11.0,
+            "Blue Area": 9.0,
+            "Rawalpindi": 15.5
+        },
+        "rating": 4.3,
+        "available_slots": [
+            "11:00 AM",
+            "3:00 PM"
+        ],
+        "completion_rate": 84.0,
+        "response_time_min": 20,
+        "estimated_charges": "Rs. 700 - Rs. 1200",
+        "emergency_available": false
+    },
+    {
+        "id": "p017",
+        "name": "Kiran Home Academy",
+        "service_type": "Tutor",
+        "areas": [
+            "I-8",
+            "Blue Area",
+            "G-10",
+            "F-10"
+        ],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.0,
+            "G-11": 9.5,
+            "F-11": 10.8,
+            "G-10": 8.2,
+            "F-10": 8.0,
+            "Bahria Town": 13.5,
+            "DHA": 12.5,
+            "I-8": 0.4,
+            "Blue Area": 4.0,
+            "Rawalpindi": 7.8
+        },
+        "rating": 4.8,
+        "available_slots": [
+            "3:00 PM",
+            "5:00 PM",
+            "6:30 PM"
+        ],
+        "completion_rate": 96.0,
+        "response_time_min": 18,
+        "estimated_charges": "Rs. 10000 - Rs. 15000 / month",
+        "emergency_available": false
+    },
+    {
+        "id": "p018",
+        "name": "Nida Makeup Artist",
+        "service_type": "Beautician",
+        "areas": [
+            "G-11",
+            "G-10",
+            "F-10",
+            "Blue Area"
+        ],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.3,
+            "G-11": 0.4,
+            "F-11": 2.7,
+            "G-10": 1.1,
+            "F-10": 2.4,
+            "Bahria Town": 18.2,
+            "DHA": 20.8,
+            "I-8": 8.6,
+            "Blue Area": 7.2,
+            "Rawalpindi": 14.2
+        },
+        "rating": 4.6,
+        "available_slots": [
+            "12:00 PM",
+            "3:00 PM",
+            "6:00 PM"
+        ],
+        "completion_rate": 91.0,
+        "response_time_min": 14,
+        "estimated_charges": "Rs. 2500 - Rs. 6000",
+        "emergency_available": false
+    },
+    {
+        "id": "p019",
+        "name": "Blue Area Plumber Hub",
+        "service_type": "Plumber",
+        "areas": [
+            "Blue Area",
+            "I-8",
+            "F-10",
+            "G-10"
+        ],
+        "base_location": "Blue Area Islamabad",
+        "distance_map": {
+            "G-13": 8.5,
+            "G-11": 7.0,
+            "F-11": 8.2,
+            "G-10": 5.8,
+            "F-10": 5.0,
+            "Bahria Town": 16.0,
+            "DHA": 17.5,
+            "I-8": 4.2,
+            "Blue Area": 0.5,
+            "Rawalpindi": 11.0
+        },
+        "rating": 4.5,
+        "available_slots": [
+            "9:00 AM",
+            "12:00 PM",
+            "3:00 PM",
+            "6:00 PM"
+        ],
+        "completion_rate": 90.0,
+        "response_time_min": 11,
+        "estimated_charges": "Rs. 1000 - Rs. 1800",
+        "emergency_available": true
+    },
+    {
+        "id": "p020",
+        "name": "Super Fast AC Service",
+        "service_type": "AC Technician",
+        "areas": [
+            "G-13",
+            "F-11",
+            "G-11"
+        ],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.4,
+            "G-11": 2.1,
+            "F-11": 3.0,
+            "G-10": 2.6,
+            "F-10": 3.7,
+            "Bahria Town": 21.0,
+            "DHA": 24.5,
+            "I-8": 11.8,
+            "Blue Area": 10.2,
+            "Rawalpindi": 17.2
+        },
+        "rating": 4.4,
+        "available_slots": [
+            "9:00 AM",
+            "12:00 PM",
+            "3:00 PM"
+        ],
+        "completion_rate": 85.0,
+        "response_time_min": 10,
+        "estimated_charges": "Rs. 1200 - Rs. 1800",
+        "emergency_available": true
+    }
 ]

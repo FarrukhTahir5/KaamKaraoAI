@@ -59,12 +59,17 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   card: {
-    backgroundColor: "#112620", // Deep emerald tint
+    backgroundColor: "rgba(22, 163, 74, 0.06)",
     borderColor: colors.primary,
     borderWidth: 1,
     borderRadius: 16,
     padding: 16,
     marginBottom: 20,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    elevation: 2,
   },
   row: {
     flexDirection: "row",
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
   },
   divider: {
     height: 1,
-    backgroundColor: "rgba(16, 185, 129, 0.2)",
+    backgroundColor: colors.border,
     marginVertical: 12,
   },
   metaRow: {

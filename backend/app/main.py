@@ -117,7 +117,8 @@ def match_providers(payload: MatchRequest):
     Step 6: Decision Agent makes final selection.
     """
     requests = get_requests()
-    target_req = next((r for r in requests if r["request_id"] == payload.request_id), None)
+    target_req = next((r for r in requests if r.get("request_id", r.get("id")) == payload.request_id), None)
+
     
     if not target_req:
         raise HTTPException(
@@ -184,7 +185,8 @@ def confirm_booking(payload: BookRequest):
     Step 8: Follow-Up Agent schedules reminder objects.
     """
     requests = get_requests()
-    target_req = next((r for r in requests if r["request_id"] == payload.request_id), None)
+    target_req = next((r for r in requests if r.get("request_id", r.get("id")) == payload.request_id), None)
+
     
     if not target_req:
         raise HTTPException(

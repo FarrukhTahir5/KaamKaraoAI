@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderColor: colors.border,
     borderWidth: 1,
+    shadowColor: "#151c27",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    elevation: 2,
   },
   header: {
     flexDirection: "row",
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   agentTag: {
-    backgroundColor: "rgba(59, 130, 246, 0.15)",
+    backgroundColor: "rgba(49, 107, 243, 0.08)",
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 8,
@@ -89,7 +94,7 @@ const styles = StyleSheet.create({
   },
   box: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.15)",
+    backgroundColor: "#f1f5f9",
     padding: 10,
     borderRadius: 8,
     minHeight: 60,
