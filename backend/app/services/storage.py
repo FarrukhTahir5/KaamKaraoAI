@@ -1,0 +1,589 @@
+import json
+import os
+from typing import List, Dict, Any, Optional
+from app.config import (
+    PROVIDERS_FILE,
+    REQUESTS_FILE,
+    BOOKINGS_FILE,
+    REMINDERS_FILE,
+    AGENT_LOGS_FILE
+)
+
+MOCK_PROVIDERS_TEMPLATE = [
+    {
+        "id": "p001",
+        "name": "Ali AC Services",
+        "service_type": "AC Technician",
+        "areas": ["G-13", "G-11", "F-11", "G-10"],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.1,
+            "G-11": 0.8,
+            "F-11": 3.2,
+            "G-10": 1.5,
+            "F-10": 2.8,
+            "Bahria Town": 18.5,
+            "DHA": 22.0,
+            "I-8": 9.5,
+            "Blue Area": 8.0,
+            "Rawalpindi": 15.0
+        },
+        "rating": 4.8,
+        "available_slots": ["10:00 AM", "2:00 PM", "5:00 PM"],
+        "completion_rate": 94.0,
+        "response_time_min": 8,
+        "estimated_charges": "Rs. 1500 - Rs. 2000",
+        "emergency_available": False
+    },
+    {
+        "id": "p002",
+        "name": "Umar Cooling & AC Repair",
+        "service_type": "AC Technician",
+        "areas": ["G-13", "G-10", "F-10", "G-11"],
+        "base_location": "G-10 Islamabad",
+        "distance_map": {
+            "G-13": 3.4,
+            "G-11": 1.2,
+            "F-11": 2.9,
+            "G-10": 1.0,
+            "F-10": 2.6,
+            "Bahria Town": 19.0,
+            "DHA": 21.5,
+            "I-8": 8.2,
+            "Blue Area": 7.5,
+            "Rawalpindi": 14.5
+        },
+        "rating": 4.6,
+        "available_slots": ["9:30 AM", "1:00 PM", "4:30 PM"],
+        "completion_rate": 90.0,
+        "response_time_min": 12,
+        "estimated_charges": "Rs. 1200 - Rs. 1800",
+        "emergency_available": True
+    },
+    {
+        "id": "p003",
+        "name": "Fast Cool Repair",
+        "service_type": "AC Technician",
+        "areas": ["G-13", "F-10", "F-11", "G-11"],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.8,
+            "G-11": 2.2,
+            "F-11": 0.7,
+            "G-10": 2.5,
+            "F-10": 2.2,
+            "Bahria Town": 21.0,
+            "DHA": 23.5,
+            "I-8": 11.0,
+            "Blue Area": 9.0,
+            "Rawalpindi": 16.5
+        },
+        "rating": 4.2,
+        "available_slots": ["11:00 AM", "3:00 PM", "6:00 PM"],
+        "completion_rate": 82.0,
+        "response_time_min": 18,
+        "estimated_charges": "Rs. 1000 - Rs. 1600",
+        "emergency_available": False
+    },
+    {
+        "id": "p004",
+        "name": "Sajid Electrician",
+        "service_type": "Electrician",
+        "areas": ["G-13", "G-11", "G-10", "F-10", "F-11"],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.5,
+            "G-11": 1.8,
+            "F-11": 2.5,
+            "G-10": 2.2,
+            "F-10": 3.0,
+            "Bahria Town": 20.0,
+            "DHA": 24.0,
+            "I-8": 10.5,
+            "Blue Area": 9.2,
+            "Rawalpindi": 16.0
+        },
+        "rating": 4.9,
+        "available_slots": ["9:00 AM", "11:30 AM", "2:30 PM", "6:00 PM"],
+        "completion_rate": 96.0,
+        "response_time_min": 5,
+        "estimated_charges": "Rs. 800 - Rs. 1500",
+        "emergency_available": True
+    },
+    {
+        "id": "p005",
+        "name": "Islamabad Electric Works",
+        "service_type": "Electrician",
+        "areas": ["F-10", "F-11", "Blue Area", "G-11"],
+        "base_location": "F-10 Islamabad",
+        "distance_map": {
+            "G-13": 4.2,
+            "G-11": 2.5,
+            "F-11": 1.8,
+            "G-10": 2.0,
+            "F-10": 0.6,
+            "Bahria Town": 18.0,
+            "DHA": 20.5,
+            "I-8": 7.8,
+            "Blue Area": 5.0,
+            "Rawalpindi": 13.0
+        },
+        "rating": 4.5,
+        "available_slots": ["10:30 AM", "1:30 PM", "4:00 PM"],
+        "completion_rate": 89.0,
+        "response_time_min": 15,
+        "estimated_charges": "Rs. 1000 - Rs. 2000",
+        "emergency_available": True
+    },
+    {
+        "id": "p006",
+        "name": "Rawal Plumbers & Geysers",
+        "service_type": "Plumber",
+        "areas": ["Rawalpindi", "DHA", "Bahria Town"],
+        "base_location": "Saddar Rawalpindi",
+        "distance_map": {
+            "G-13": 14.0,
+            "G-11": 13.5,
+            "F-11": 15.0,
+            "G-10": 12.5,
+            "F-10": 13.0,
+            "Bahria Town": 6.5,
+            "DHA": 5.0,
+            "I-8": 8.0,
+            "Blue Area": 11.5,
+            "Rawalpindi": 1.2
+        },
+        "rating": 4.7,
+        "available_slots": ["8:30 AM", "12:00 PM", "3:30 PM", "7:00 PM"],
+        "completion_rate": 93.0,
+        "response_time_min": 10,
+        "estimated_charges": "Rs. 1500 - Rs. 2500",
+        "emergency_available": True
+    },
+    {
+        "id": "p007",
+        "name": "Hamza Plumber G-13",
+        "service_type": "Plumber",
+        "areas": ["G-13", "G-11", "G-10"],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.8,
+            "G-11": 2.0,
+            "F-11": 3.0,
+            "G-10": 2.5,
+            "F-10": 3.5,
+            "Bahria Town": 21.0,
+            "DHA": 24.5,
+            "I-8": 11.5,
+            "Blue Area": 10.0,
+            "Rawalpindi": 17.0
+        },
+        "rating": 4.4,
+        "available_slots": ["10:00 AM", "1:00 PM", "4:00 PM"],
+        "completion_rate": 88.0,
+        "response_time_min": 14,
+        "estimated_charges": "Rs. 800 - Rs. 1500",
+        "emergency_available": False
+    },
+    {
+        "id": "p008",
+        "name": "Maths & Physics Mastermind",
+        "service_type": "Tutor",
+        "areas": ["F-10", "F-11", "G-11", "G-10"],
+        "base_location": "F-10 Islamabad",
+        "distance_map": {
+            "G-13": 3.8,
+            "G-11": 2.1,
+            "F-11": 1.5,
+            "G-10": 1.8,
+            "F-10": 0.5,
+            "Bahria Town": 18.5,
+            "DHA": 21.0,
+            "I-8": 8.0,
+            "Blue Area": 5.5,
+            "Rawalpindi": 14.0
+        },
+        "rating": 4.9,
+        "available_slots": ["3:00 PM", "5:00 PM", "7:00 PM"],
+        "completion_rate": 97.0,
+        "response_time_min": 25,
+        "estimated_charges": "Rs. 8000 - Rs. 12000 / month",
+        "emergency_available": False
+    },
+    {
+        "id": "p009",
+        "name": "Glow Home Salon & Bridal",
+        "service_type": "Beautician",
+        "areas": ["G-13", "F-11", "F-10", "G-11"],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.5,
+            "G-11": 1.9,
+            "F-11": 0.5,
+            "G-10": 2.8,
+            "F-10": 2.0,
+            "Bahria Town": 21.5,
+            "DHA": 23.0,
+            "I-8": 11.5,
+            "Blue Area": 9.5,
+            "Rawalpindi": 16.0
+        },
+        "rating": 4.8,
+        "available_slots": ["11:00 AM", "2:00 PM", "5:00 PM"],
+        "completion_rate": 95.0,
+        "response_time_min": 15,
+        "estimated_charges": "Rs. 3000 - Rs. 7000",
+        "emergency_available": False
+    },
+    {
+        "id": "p010",
+        "name": "Bashir Pipe & Sanitary Shop",
+        "service_type": "Plumber",
+        "areas": ["G-11", "G-10", "F-10", "F-11"],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.0,
+            "G-11": 0.5,
+            "F-11": 2.6,
+            "G-10": 1.2,
+            "F-10": 2.5,
+            "Bahria Town": 18.0,
+            "DHA": 20.5,
+            "I-8": 8.5,
+            "Blue Area": 7.0,
+            "Rawalpindi": 14.0
+        },
+        "rating": 4.1,
+        "available_slots": ["9:00 AM", "12:00 PM", "3:00 PM"],
+        "completion_rate": 80.0,
+        "response_time_min": 20,
+        "estimated_charges": "Rs. 1000 - Rs. 1800",
+        "emergency_available": True
+    },
+    {
+        "id": "p011",
+        "name": "Quick Fix Plumbers",
+        "service_type": "Plumber",
+        "areas": ["G-13", "G-11", "G-10", "F-11"],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.3,
+            "G-11": 2.2,
+            "F-11": 3.1,
+            "G-10": 2.8,
+            "F-10": 3.9,
+            "Bahria Town": 21.5,
+            "DHA": 25.0,
+            "I-8": 12.0,
+            "Blue Area": 10.5,
+            "Rawalpindi": 17.5
+        },
+        "rating": 4.6,
+        "available_slots": ["8:00 AM", "11:00 AM", "2:00 PM", "5:00 PM"],
+        "completion_rate": 91.0,
+        "response_time_min": 6,
+        "estimated_charges": "Rs. 1200 - Rs. 2000",
+        "emergency_available": True
+    },
+    {
+        "id": "p012",
+        "name": "Smart Electric Services",
+        "service_type": "Electrician",
+        "areas": ["I-8", "Blue Area", "DHA", "Bahria Town"],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.5,
+            "G-11": 10.0,
+            "F-11": 11.2,
+            "G-10": 8.8,
+            "F-10": 8.5,
+            "Bahria Town": 12.0,
+            "DHA": 11.0,
+            "I-8": 0.6,
+            "Blue Area": 3.5,
+            "Rawalpindi": 8.0
+        },
+        "rating": 4.7,
+        "available_slots": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM"],
+        "completion_rate": 93.0,
+        "response_time_min": 9,
+        "estimated_charges": "Rs. 1000 - Rs. 2500",
+        "emergency_available": True
+    },
+    {
+        "id": "p013",
+        "name": "Science & English Academy",
+        "service_type": "Tutor",
+        "areas": ["G-13", "G-11", "G-10"],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.6,
+            "G-11": 1.9,
+            "F-11": 2.8,
+            "G-10": 2.4,
+            "F-10": 3.6,
+            "Bahria Town": 21.0,
+            "DHA": 24.0,
+            "I-8": 11.0,
+            "Blue Area": 10.0,
+            "Rawalpindi": 16.5
+        },
+        "rating": 4.5,
+        "available_slots": ["4:00 PM", "6:00 PM"],
+        "completion_rate": 90.0,
+        "response_time_min": 30,
+        "estimated_charges": "Rs. 6000 - Rs. 10000 / month",
+        "emergency_available": False
+    },
+    {
+        "id": "p014",
+        "name": "DHA Beauty Express",
+        "service_type": "Beautician",
+        "areas": ["DHA", "Bahria Town", "Rawalpindi"],
+        "base_location": "DHA Phase 2",
+        "distance_map": {
+            "G-13": 24.0,
+            "G-11": 22.5,
+            "F-11": 24.0,
+            "G-10": 21.5,
+            "F-10": 22.0,
+            "Bahria Town": 4.5,
+            "DHA": 0.8,
+            "I-8": 14.0,
+            "Blue Area": 17.5,
+            "Rawalpindi": 9.0
+        },
+        "rating": 4.7,
+        "available_slots": ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM"],
+        "completion_rate": 94.0,
+        "response_time_min": 12,
+        "estimated_charges": "Rs. 4000 - Rs. 9000",
+        "emergency_available": False
+    },
+    {
+        "id": "p015",
+        "name": "Expert AC & Heating Solutions",
+        "service_type": "AC Technician",
+        "areas": ["I-8", "Blue Area", "G-10", "DHA"],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.0,
+            "G-11": 9.5,
+            "F-11": 10.8,
+            "G-10": 8.0,
+            "F-10": 8.2,
+            "Bahria Town": 13.0,
+            "DHA": 12.0,
+            "I-8": 0.5,
+            "Blue Area": 4.0,
+            "Rawalpindi": 7.5
+        },
+        "rating": 4.8,
+        "available_slots": ["10:30 AM", "2:30 PM", "5:30 PM"],
+        "completion_rate": 96.0,
+        "response_time_min": 7,
+        "estimated_charges": "Rs. 1800 - Rs. 2500",
+        "emergency_available": True
+    },
+    {
+        "id": "p016",
+        "name": "Zahid Electric Repair",
+        "service_type": "Electrician",
+        "areas": ["G-13", "F-11", "G-11"],
+        "base_location": "F-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.2,
+            "G-11": 1.7,
+            "F-11": 0.5,
+            "G-10": 2.4,
+            "F-10": 2.0,
+            "Bahria Town": 21.0,
+            "DHA": 23.5,
+            "I-8": 11.0,
+            "Blue Area": 9.0,
+            "Rawalpindi": 15.5
+        },
+        "rating": 4.3,
+        "available_slots": ["11:00 AM", "3:00 PM"],
+        "completion_rate": 84.0,
+        "response_time_min": 20,
+        "estimated_charges": "Rs. 700 - Rs. 1200",
+        "emergency_available": False
+    },
+    {
+        "id": "p017",
+        "name": "Kiran Home Academy",
+        "service_type": "Tutor",
+        "areas": ["I-8", "Blue Area", "G-10", "F-10"],
+        "base_location": "I-8 Islamabad",
+        "distance_map": {
+            "G-13": 11.0,
+            "G-11": 9.5,
+            "F-11": 10.8,
+            "G-10": 8.2,
+            "F-10": 8.0,
+            "Bahria Town": 13.5,
+            "DHA": 12.5,
+            "I-8": 0.4,
+            "Blue Area": 4.0,
+            "Rawalpindi": 7.8
+        },
+        "rating": 4.8,
+        "available_slots": ["3:00 PM", "5:00 PM", "6:30 PM"],
+        "completion_rate": 96.0,
+        "response_time_min": 18,
+        "estimated_charges": "Rs. 10000 - Rs. 15000 / month",
+        "emergency_available": False
+    },
+    {
+        "id": "p018",
+        "name": "Nida Makeup Artist",
+        "service_type": "Beautician",
+        "areas": ["G-11", "G-10", "F-10", "Blue Area"],
+        "base_location": "G-11 Islamabad",
+        "distance_map": {
+            "G-13": 2.3,
+            "G-11": 0.4,
+            "F-11": 2.7,
+            "G-10": 1.1,
+            "F-10": 2.4,
+            "Bahria Town": 18.2,
+            "DHA": 20.8,
+            "I-8": 8.6,
+            "Blue Area": 7.2,
+            "Rawalpindi": 14.2
+        },
+        "rating": 4.6,
+        "available_slots": ["12:00 PM", "3:00 PM", "6:00 PM"],
+        "completion_rate": 91.0,
+        "response_time_min": 14,
+        "estimated_charges": "Rs. 2500 - Rs. 6000",
+        "emergency_available": False
+    },
+    {
+        "id": "p019",
+        "name": "Blue Area Plumber Hub",
+        "service_type": "Plumber",
+        "areas": ["Blue Area", "I-8", "F-10", "G-10"],
+        "base_location": "Blue Area Islamabad",
+        "distance_map": {
+            "G-13": 8.5,
+            "G-11": 7.0,
+            "F-11": 8.2,
+            "G-10": 5.8,
+            "F-10": 5.0,
+            "Bahria Town": 16.0,
+            "DHA": 17.5,
+            "I-8": 4.2,
+            "Blue Area": 0.5,
+            "Rawalpindi": 11.0
+        },
+        "rating": 4.5,
+        "available_slots": ["9:00 AM", "12:00 PM", "3:00 PM", "6:00 PM"],
+        "completion_rate": 90.0,
+        "response_time_min": 11,
+        "estimated_charges": "Rs. 1000 - Rs. 1800",
+        "emergency_available": True
+    },
+    {
+        "id": "p020",
+        "name": "Super Fast AC Service",
+        "service_type": "AC Technician",
+        "areas": ["G-13", "F-11", "G-11"],
+        "base_location": "G-13 Islamabad",
+        "distance_map": {
+            "G-13": 0.4,
+            "G-11": 2.1,
+            "F-11": 3.0,
+            "G-10": 2.6,
+            "F-10": 3.7,
+            "Bahria Town": 21.0,
+            "DHA": 24.5,
+            "I-8": 11.8,
+            "Blue Area": 10.2,
+            "Rawalpindi": 17.2
+        },
+        "rating": 4.4,
+        "available_slots": ["9:00 AM", "12:00 PM", "3:00 PM"],
+        "completion_rate": 85.0,
+        "response_time_min": 10,
+        "estimated_charges": "Rs. 1200 - Rs. 1800",
+        "emergency_available": True
+    }
+]
+
+def initialize_storage():
+    """Initializes JSON data storage files with default mock data if not existing."""
+    if not os.path.exists(PROVIDERS_FILE):
+        with open(PROVIDERS_FILE, "w") as f:
+            json.dump(MOCK_PROVIDERS_TEMPLATE, f, indent=4)
+            
+    for file_path in [REQUESTS_FILE, BOOKINGS_FILE, REMINDERS_FILE, AGENT_LOGS_FILE]:
+        if not os.path.exists(file_path):
+            with open(file_path, "w") as f:
+                json.dump([], f, indent=4)
+
+def read_json(file_path: str) -> List[Any]:
+    """Helper to read list elements from JSON files securely."""
+    initialize_storage()
+    try:
+        with open(file_path, "r") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+def write_json(file_path: str, data: List[Any]):
+    """Helper to write lists to JSON files securely."""
+    with open(file_path, "w") as f:
+        json.dump(data, f, indent=4)
+
+def get_providers() -> List[Dict[str, Any]]:
+    return read_json(PROVIDERS_FILE)
+
+def get_requests() -> List[Dict[str, Any]]:
+    return read_json(REQUESTS_FILE)
+
+def save_request(req_data: Dict[str, Any]):
+    requests = get_requests()
+    requests.append(req_data)
+    write_json(REQUESTS_FILE, requests)
+
+def get_bookings() -> List[Dict[str, Any]]:
+    return read_json(BOOKINGS_FILE)
+
+def save_booking(booking_data: Dict[str, Any]):
+    bookings = get_bookings()
+    bookings.append(booking_data)
+    write_json(BOOKINGS_FILE, bookings)
+
+def get_reminders() -> List[Dict[str, Any]]:
+    return read_json(REMINDERS_FILE)
+
+def save_reminders(rem_list: List[Dict[str, Any]]):
+    reminders = get_reminders()
+    reminders.extend(rem_list)
+    write_json(REMINDERS_FILE, reminders)
+
+def get_agent_logs() -> List[Dict[str, Any]]:
+    return read_json(AGENT_LOGS_FILE)
+
+def save_agent_log(log_data: Dict[str, Any]):
+    logs = get_agent_logs()
+    logs.append(log_data)
+    write_json(AGENT_LOGS_FILE, logs)
+
+def reset_all_data():
+    """Resets bookings, requests, reminders, and logs, and restores baseline providers."""
+    with open(PROVIDERS_FILE, "w") as f:
+        json.dump(MOCK_PROVIDERS_TEMPLATE, f, indent=4)
+    with open(REQUESTS_FILE, "w") as f:
+        json.dump([], f, indent=4)
+    with open(BOOKINGS_FILE, "w") as f:
+        json.dump([], f, indent=4)
+    with open(REMINDERS_FILE, "w") as f:
+        json.dump([], f, indent=4)
+    with open(AGENT_LOGS_FILE, "w") as f:
+        json.dump([], f, indent=4)
+
+# Initialize storage upon importing service
+initialize_storage()
