@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KaamKarao AI - Mission Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400&amp;family=JetBrains+Mono:wght@500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005321",
+                        "on-secondary-container": "#004119",
+                        "on-primary": "#00354a",
+                        "on-surface-variant": "#bdc8d1",
+                        "on-tertiary": "#3c0091",
+                        "on-primary-container": "#004965",
+                        "on-secondary": "#003915",
+                        "on-background": "#dae2fd",
+                        "surface-bright": "#31394d",
+                        "outline-variant": "#3e484f",
+                        "inverse-on-surface": "#283044",
+                        "on-secondary-fixed": "#002109",
+                        "secondary-fixed-dim": "#4ae176",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "on-primary-fixed": "#001e2c",
+                        "surface-tint": "#7bd0ff",
+                        "outline": "#87929a",
+                        "secondary": "#4ae176",
+                        "surface-container-low": "#131b2e",
+                        "on-error": "#690005",
+                        "on-surface": "#dae2fd",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#0b1326",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "secondary-container": "#00b954",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary": "#d5c3ff",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-container": "#171f33",
+                        "tertiary-container": "#bda2ff",
+                        "primary": "#8ed5ff",
+                        "primary-fixed": "#c4e7ff",
+                        "surface-container-high": "#222a3d",
+                        "on-tertiary-container": "#520fbb",
+                        "surface-variant": "#2d3449",
+                        "surface-dim": "#0b1326",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004c69",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-primary": "#00668a",
+                        "secondary-fixed": "#6bff8f",
+                        "on-tertiary-fixed": "#23005c",
+                        "background": "#0b1326",
+                        "primary-container": "#38bdf8",
+                        "surface-container-lowest": "#060e20",
+                        "tertiary-fixed-dim": "#d0bcff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "20px",
+                        "unit": "8px",
+                        "container-padding-desktop": "48px",
+                        "gutter": "24px",
+                        "component-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Geist"],
+                        "data-point": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "body-lg": ["Geist"],
+                        "display-lg": ["Sora"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-point": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hex-clip {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .glow-ring {
+            box-shadow: 0 0 20px rgba(142, 213, 255, 0.4), inset 0 0 20px rgba(142, 213, 255, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen relative overflow-x-hidden selection:bg-primary/30">
+<!-- Atmospheric Background Gradient -->
+<div class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background pointer-events-none"></div>
+<div class="fixed inset-0 z-[-1] opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] pointer-events-none"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-container-padding-mobile md:px-container-padding-desktop py-4 bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+<div class="flex items-center gap-3 w-full">
+<span class="material-symbols-outlined text-primary dark:text-primary text-2xl">psychology</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-primary drop-shadow-[0_0_10px_rgba(142,213,255,0.5)]">KaamKarao AI</span>
+</div>
+</header>
+<main class="pt-[88px] pb-[100px] md:pb-12 px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto flex flex-col gap-gutter">
+<!-- Header Section -->
+<section class="mt-8 mb-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(74,225,118,0.6)] animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em]">Status: Ready</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface bg-clip-text text-transparent bg-gradient-to-r from-on-surface to-on-surface-variant">
+                Primary Target Selected
+            </h1>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Profile & Score (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-component-gap">
+<!-- Profile Glass Pod -->
+<article class="bg-surface-container/40 backdrop-blur-[24px] rounded-xl border border-white/10 p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<div class="flex flex-col items-center text-center">
+<!-- Hexagonal Avatar -->
+<div class="relative w-32 h-32 mb-6">
+<div class="absolute inset-0 bg-primary/20 hex-clip blur-md"></div>
+<div class="absolute inset-[2px] bg-surface hex-clip flex items-center justify-center z-10 border border-primary/30">
+<img alt="Profile picture" class="w-full h-full object-cover hex-clip opacity-90 group-hover:opacity-100 transition-opacity" data-alt="A high-tech, cinematic portrait of a skilled technician in a dark, neon-lit environment. The lighting is moody with sharp cyan and teal accents, fitting an AI mission control aesthetic. The subject looks professional and focused, seen through a subtly glowing digital overlay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDATiTM--W5hRjpV9jpY13odRu7DqfDrM06q5UsT-s5Wxfb5RuO0-dRQGLMk6RBS2AJNx6SF1m0Q8xbOS3QZobhF_DAfD3va5pbzaazriSooYkLU7sK1ydfecjKj47Unpu6nat2B2S7-GaNzC5-MYn7P7CC-RS85Qvt0Ikf5rqXW5UqCcfAzlYx_IM_W5AnXTY3Ktf_teLO7fxcRrjnq9b2C74RTRv9YmcJRYCOJ4k4lCTc0jkebkOgUB7JBQNfykR6AuDvTvJitJU"/>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Ali AC Services</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-4">ID: S-7729-AC</p>
+<div class="flex items-center gap-2 bg-surface-variant/50 px-3 py-1.5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-data-point text-data-point text-secondary">Verified Specialist</span>
+</div>
+</div>
+</article>
+<!-- Mission Compatibility Ring -->
+<article class="bg-surface-container/40 backdrop-blur-[24px] rounded-xl border border-white/10 p-6 flex flex-col items-center justify-center min-h-[240px]">
+<div class="relative flex items-center justify-center">
+<!-- Outer Glow -->
+<div class="absolute w-[140px] h-[140px] rounded-full border-2 border-primary/20 glow-ring"></div>
+<!-- Inner Circle -->
+<div class="w-[120px] h-[120px] rounded-full border-4 border-surface-variant border-t-primary border-r-primary flex flex-col items-center justify-center transform rotate-45 relative z-10 bg-surface/50 backdrop-blur-sm">
+<div class="transform -rotate-45 text-center">
+<span class="block font-display-lg text-[40px] leading-none text-primary tracking-tighter">92<span class="text-[24px]">%</span></span>
+</div>
+</div>
+</div>
+<h3 class="font-label-caps text-label-caps text-primary tracking-widest uppercase mt-6 text-center">Mission Compatibility</h3>
+</article>
+</div>
+<!-- Right Column: Reasoning & Intelligence (Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-component-gap">
+<!-- Reasoning Section -->
+<article class="bg-surface-container/40 backdrop-blur-[24px] rounded-xl border border-white/10 p-6 lg:p-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">AI Synthesis</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Optimal selection based on proximity, <strong class="text-on-surface">100% morning slot availability</strong>, and superior Trust Score. Historically outperforms regional average in diagnostic speed by 2.4x.
+                    </p>
+<div class="flex gap-4 mt-6">
+<div class="flex-1 bg-surface-bright/30 rounded-lg p-4 border border-white/5 border-l-secondary border-l-[3px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Proximity</span>
+<span class="font-data-point text-data-point text-on-surface">1.2 km</span>
+</div>
+<div class="flex-1 bg-surface-bright/30 rounded-lg p-4 border border-white/5 border-l-primary border-l-[3px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">Trust Score</span>
+<span class="font-data-point text-data-point text-on-surface">4.9/5.0</span>
+</div>
+<div class="flex-1 bg-surface-bright/30 rounded-lg p-4 border border-white/5 border-l-tertiary border-l-[3px]">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">ETA</span>
+<span class="font-data-point text-data-point text-on-surface">08:00 AM</span>
+</div>
+</div>
+</article>
+<!-- Competitive Intelligence Table -->
+<article class="bg-surface-container/40 backdrop-blur-[24px] rounded-xl border border-white/10 overflow-hidden flex-1 flex flex-col">
+<div class="p-6 border-b border-white/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">query_stats</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Competitive Intelligence</h3>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-bright/20 font-label-caps text-label-caps text-on-surface-variant">
+<th class="py-4 px-6 font-medium border-b border-white/10">Operative</th>
+<th class="py-4 px-6 font-medium border-b border-white/10">Match</th>
+<th class="py-4 px-6 font-medium border-b border-white/10">Availability</th>
+<th class="py-4 px-6 font-medium border-b border-white/10 text-right">Fee Est.</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<!-- Active Target -->
+<tr class="bg-primary/5 border-b border-white/5 relative">
+<td class="py-4 px-6 text-primary font-semibold flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(142,213,255,0.8)]"></div>
+                                        Ali AC
+                                    </td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1 bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<span class="font-data-point text-data-point text-on-surface">92%</span>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface">08:00 AM</td>
+<td class="py-4 px-6 text-on-surface text-right font-data-point">₨ 1,500</td>
+</tr>
+<!-- Alternatives -->
+<tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="py-4 px-6 text-on-surface-variant">Umar Fixes</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2 opacity-70">
+<div class="w-16 h-1 bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[78%]"></div>
+</div>
+<span class="font-data-point text-data-point text-on-surface-variant">78%</span>
+</div>
+</td>
+<td class="py-4 px-6 text-on-surface-variant">02:00 PM</td>
+<td class="py-4 px-6 text-on-surface-variant text-right font-data-point">₨ 1,200</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="py-4 px-6 text-on-surface-variant">Fast Cool</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-2 opacity-70">
+<div class="w-16 h-1 bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-error w-[65%]"></div>
+</div>
+<span class="font-data-point text-data-point text-on-surface-variant">65%</span>
+</div>
+</td>
+<td class="py-4 px-6 text-error">Busy</td>
+<td class="py-4 px-6 text-on-surface-variant text-right font-data-point">₨ 1,800</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article>
+<!-- Action Bar -->
+<div class="mt-4 flex justify-end">
+<button class="bg-gradient-to-r from-primary to-primary-fixed text-on-primary-fixed px-8 py-4 rounded-lg font-data-point text-data-point uppercase tracking-widest shadow-[0_0_15px_rgba(142,213,255,0.3)] hover:shadow-[0_0_25px_rgba(142,213,255,0.5)] transition-all flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                        Execute Booking
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-4 px-6 bg-surface-container/40 dark:bg-surface-container/40 backdrop-blur-2xl border-t border-white/10 shadow-[0_-8px_32px_rgba(0,0,0,0.5)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<!-- Active Tab: Mission -->
+<a class="flex flex-col items-center justify-center text-secondary drop-shadow-[0_0_8px_rgba(74,225,118,0.6)] scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="font-label-caps text-label-caps">Mission</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1">query_stats</span>
+<span class="font-label-caps text-label-caps">Trace</span>
+</a>
+</nav>
+</body></html>

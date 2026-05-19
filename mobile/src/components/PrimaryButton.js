@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Platform } from "react-native";
 import colors from "../theme/colors";
 
 export default function PrimaryButton({ title, onPress, disabled, style, textStyle }) {
@@ -14,7 +14,13 @@ export default function PrimaryButton({ title, onPress, disabled, style, textSty
         style
       ]}
     >
-      <Text style={[styles.text, textStyle]}>{title}</Text>
+      <Text style={[
+        styles.text, 
+        disabled && styles.disabledText,
+        textStyle
+      ]}>
+        {title.toUpperCase()}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -28,22 +34,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 6,
     width: "100%",
     marginVertical: 8,
+    borderWidth: 1,
+    borderColor: "rgba(142, 213, 255, 0.4)",
   },
   disabledButton: {
-    backgroundColor: colors.border,
+    backgroundColor: "rgba(255, 255, 255, 0.03)",
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    borderWidth: 1,
     shadowOpacity: 0,
     elevation: 0,
   },
   text: {
-    color: colors.white,
-    fontSize: 16,
+    color: "#00354a", // Deep contrast slate blue
+    fontSize: 14,
     fontWeight: "bold",
-    letterSpacing: 0.5,
+    letterSpacing: 1.5,
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
+  },
+  disabledText: {
+    color: "rgba(255, 255, 255, 0.2)",
   },
 });

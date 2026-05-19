@@ -1,21 +1,26 @@
 const colors = {
-  primary: "#16a34a",       // Vibrant Green Anchor
-  primaryDark: "#006b2c",
-  primaryContainer: "#00873a",
-  background: "#f9f9ff",    // Level 0 Background (Light slate-white)
-  cardBackground: "#ffffff",// Level 1 White Containers
-  border: "#bdcaba",        // Clean, soft structural borders
-  text: "#151c27",          // Deep dark slate on-surface text
-  textMuted: "#3e4a3d",     // Subdued green-slate on-surface variant
-  accent: "#316bf3",        // Premium secondary blue for trace agent nodes
-  success: "#006b2c",
-  warning: "#f59e0b",       // Trust gold warning accents
-  error: "#ba1a1a",         // High-urgency error red
-  urgencyHigh: "#ba1a1a",
-  urgencyNormal: "#316bf3",
-  urgencyLow: "#16a34a",
+  primary: "#8ed5ff",               // Electric Blue Anchor
+  primaryDark: "#004c69",
+  primaryContainer: "#38bdf8",
+  background: "#0b1326",            // Deep space base
+  backgroundLowest: "#060e20",      // Absolute dark background
+  cardBackground: "#171f33",        // Slate glass containers
+  cardBackgroundHigh: "#222a3d",    // Elevated bento container
+  cardBackgroundHighest: "#2d3449", // Contrast inner card
+  border: "rgba(255, 255, 255, 0.1)",// Delicate translucent glass borders
+  outline: "#87929a",
+  outlineVariant: "#3e484f",
+  text: "#dae2fd",                  // High contrast neon on-surface text
+  textMuted: "#bdc8d1",             // Subdued gray text
+  accent: "#d5c3ff",                // Cyber Lavender
+  success: "#4ae176",               // Cyber Green
+  warning: "#ffb4ab",
+  error: "#ffb4ab",                 // High-urgency error red
+  urgencyHigh: "#ffb4ab",
+  urgencyNormal: "#8ed5ff",
+  urgencyLow: "#4ae176",
   white: "#FFFFFF",
-  tint: "rgba(22, 163, 74, 0.08)"
+  tint: "rgba(142, 213, 255, 0.1)"
 };
 
 export default colors;

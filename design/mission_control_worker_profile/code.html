@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Sora:wght@600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#6bff8f",
+                      "surface-dim": "#0b1326",
+                      "secondary-fixed-dim": "#4ae176",
+                      "on-secondary-fixed": "#002109",
+                      "inverse-primary": "#00668a",
+                      "on-tertiary-container": "#520fbb",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#2d3449",
+                      "outline-variant": "#3e484f",
+                      "tertiary-container": "#bda2ff",
+                      "tertiary-fixed": "#e9ddff",
+                      "on-surface-variant": "#bdc8d1",
+                      "surface-container": "#171f33",
+                      "primary-container": "#38bdf8",
+                      "on-secondary-container": "#004119",
+                      "on-tertiary-fixed": "#23005c",
+                      "inverse-surface": "#dae2fd",
+                      "on-secondary-fixed-variant": "#005321",
+                      "on-primary-container": "#004965",
+                      "on-tertiary": "#3c0091",
+                      "surface-container-lowest": "#060e20",
+                      "secondary": "#4ae176",
+                      "inverse-on-surface": "#283044",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#00b954",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#222a3d",
+                      "surface": "#0b1326",
+                      "on-background": "#dae2fd",
+                      "surface-variant": "#2d3449",
+                      "on-primary-fixed-variant": "#004c69",
+                      "surface-tint": "#7bd0ff",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#7bd0ff",
+                      "outline": "#87929a",
+                      "on-surface": "#dae2fd",
+                      "primary-fixed": "#c4e7ff",
+                      "on-primary": "#00354a",
+                      "on-primary-fixed": "#001e2c",
+                      "background": "#0b1326",
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "surface-container-low": "#131b2e",
+                      "tertiary": "#d5c3ff",
+                      "surface-bright": "#31394d",
+                      "tertiary-fixed-dim": "#d0bcff",
+                      "primary": "#8ed5ff",
+                      "on-secondary": "#003915"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "20px",
+                      "container-padding-desktop": "48px",
+                      "unit": "8px",
+                      "component-gap": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Geist"],
+                      "data-point": ["JetBrains Mono"],
+                      "label-caps": ["JetBrains Mono"],
+                      "headline-md": ["Sora"],
+                      "display-lg": ["Sora"],
+                      "display-lg-mobile": ["Sora"],
+                      "body-md": ["Geist"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "data-point": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(45, 52, 73, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-accent {
+            box-shadow: 0 0 20px rgba(142, 213, 255, 0.3);
+        }
+        .glow-green {
+            box-shadow: 0 0 15px rgba(107, 255, 143, 0.4);
+        }
+        .trust-badge-ring {
+            background: conic-gradient(from 0deg, #8ed5ff, #4ae176, #8ed5ff);
+            padding: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center w-full px-container-padding-mobile h-16 border-b border-outline-variant/30">
+<button class="text-primary hover:bg-surface-container-low transition-all active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md tracking-tight text-primary">Worker Profile</h1>
+<button class="text-primary hover:bg-surface-container-low transition-all active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">share</span>
+</button>
+</header>
+<main class="max-w-md mx-auto px-container-padding-mobile pt-8">
+<!-- Hero Section -->
+<div class="relative flex flex-col items-center mb-10">
+<div class="relative">
+<div class="w-52 h-52 rounded-full overflow-hidden border-2 border-primary/30 p-1 bg-surface-container-lowest glow-accent">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-container">
+<img alt="Ali the Plumber" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6S5vk_T_MQ5Qoz_RGiUWqnaz6IZwQV6pg2Wdve-bjlV_XfFNcrzlaWBpHqal1ufOEqiE66Vv8oARy0Ld7vzzNkpepOdYf700C53Q0q2bto7aNUOCjWngsPvAx8Fr8L6i3ksF4o3kzfDG6ny-S4f6i5P7juGb6yxv_WbBfxOJT8J1Lh41kep-XCXPtl1O5NTNCnklUBq1hbkOfMl_1I_RS6QSryDZq2TekyeJ0jcmOiEOBVRtYj2huy4-iwuHeIrke4YinNpdQrOrt"/>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 bg-secondary text-on-secondary rounded-full p-1.5 glow-green border-2 border-surface">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="text-center mt-6">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Ali the Plumber</h2>
+<p class="font-label-caps text-label-caps text-primary mt-1 uppercase tracking-widest">Master Systems Technician</p>
+</div>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-2 gap-unit mb-gutter">
+<!-- Trust Score -->
+<div class="glass-panel p-component-gap rounded-xl flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<div class="trust-badge-ring rounded-full mb-2">
+<div class="bg-surface-container-lowest rounded-full px-3 py-1">
+<span class="font-data-point text-[24px] text-secondary">95%</span>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px] uppercase">Trust Score</p>
+</div>
+<!-- Ratings -->
+<div class="glass-panel p-component-gap rounded-xl flex flex-col items-center justify-center">
+<div class="flex items-center gap-1 mb-1">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">4.9</span>
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px] uppercase">Rating</p>
+</div>
+<!-- Jobs Completed -->
+<div class="col-span-2 glass-panel p-component-gap rounded-xl flex items-center justify-around">
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-on-surface">120+</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px] uppercase">Deployments</p>
+</div>
+<div class="w-[1px] h-12 bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-on-surface">8yrs</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant text-[10px] uppercase">Experience</p>
+</div>
+</div>
+</div>
+<!-- Service Highlights -->
+<div class="mb-gutter">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-component-gap uppercase tracking-widest">Specializations</h3>
+<div class="flex flex-wrap gap-unit">
+<span class="glass-panel text-primary px-4 py-2 rounded-lg font-data-point text-data-point border-primary/20">Leak Repair</span>
+<span class="glass-panel text-primary px-4 py-2 rounded-lg font-data-point text-data-point border-primary/20">Pipe Fitting</span>
+<span class="glass-panel text-primary px-4 py-2 rounded-lg font-data-point text-data-point border-primary/20">Water Heater</span>
+<span class="glass-panel text-primary px-4 py-2 rounded-lg font-data-point text-data-point border-primary/20">Drain Cleaning</span>
+</div>
+</div>
+<!-- About Section -->
+<div class="mb-gutter">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest">System Overview</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Expert technician with over 8 years of operational experience. Highly rated for precision diagnostics and rapid system restoration. Specialized in modern hydraulic architecture and smart water infrastructure.
+        </p>
+</div>
+<!-- Experience Timeline -->
+<div class="mb-gutter">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-component-gap uppercase tracking-widest">Operational Protocol</h3>
+<div class="space-y-0 pl-4 border-l border-outline-variant/50">
+<div class="relative pb-8 pl-6">
+<div class="absolute -left-[9px] top-0 w-4 h-4 bg-primary rounded-full glow-accent"></div>
+<p class="font-headline-md text-[18px] text-on-surface mb-1">Rapid Response</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Arrival within 30 minutes for critical system leaks.</p>
+</div>
+<div class="relative pb-8 pl-6">
+<div class="absolute -left-[9px] top-0 w-4 h-4 bg-primary rounded-full glow-accent"></div>
+<p class="font-headline-md text-[18px] text-on-surface mb-1">Transparent Pricing</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Standardized unit costs calculated before operation.</p>
+</div>
+<div class="relative pl-6">
+<div class="absolute -left-[9px] top-0 w-4 h-4 bg-secondary rounded-full glow-green"></div>
+<p class="font-headline-md text-[18px] text-on-surface mb-1">Service Warranty</p>
+<p class="font-body-md text-body-md text-on-surface-variant">7-day post-repair operational guarantee.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Action Buttons Container -->
+<div class="fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-xl px-container-padding-mobile py-gutter flex gap-component-gap border-t border-outline-variant/30 shadow-2xl">
+<button class="flex-1 glass-panel text-on-surface font-label-caps text-label-caps h-14 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-all duration-150 uppercase">
+<span class="material-symbols-outlined text-primary">call</span>
+        Communicate
+    </button>
+<button class="flex-[1.5] bg-primary text-on-primary font-label-caps text-label-caps h-14 rounded-xl glow-accent flex items-center justify-center gap-2 active:scale-95 transition-all duration-150 uppercase font-bold tracking-wider">
+<span class="material-symbols-outlined">rocket_launch</span>
+        Book Mission
+    </button>
+</div>
+</body></html>

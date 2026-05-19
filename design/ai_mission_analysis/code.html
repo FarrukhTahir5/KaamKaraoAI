@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KaamKarao AI - AI Understanding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Sora:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#005321",
+                      "on-secondary-container": "#004119",
+                      "on-primary": "#00354a",
+                      "on-surface-variant": "#bdc8d1",
+                      "on-tertiary": "#3c0091",
+                      "on-primary-container": "#004965",
+                      "on-secondary": "#003915",
+                      "on-background": "#dae2fd",
+                      "surface-bright": "#31394d",
+                      "outline-variant": "#3e484f",
+                      "inverse-on-surface": "#283044",
+                      "on-secondary-fixed": "#002109",
+                      "secondary-fixed-dim": "#4ae176",
+                      "primary-fixed-dim": "#7bd0ff",
+                      "on-primary-fixed": "#001e2c",
+                      "surface-tint": "#7bd0ff",
+                      "outline": "#87929a",
+                      "secondary": "#4ae176",
+                      "surface-container-low": "#131b2e",
+                      "on-error": "#690005",
+                      "on-surface": "#dae2fd",
+                      "on-error-container": "#ffdad6",
+                      "surface": "#0b1326",
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "secondary-container": "#00b954",
+                      "inverse-surface": "#dae2fd",
+                      "tertiary": "#d5c3ff",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#e9ddff",
+                      "surface-container": "#171f33",
+                      "tertiary-container": "#bda2ff",
+                      "primary": "#8ed5ff",
+                      "primary-fixed": "#c4e7ff",
+                      "surface-container-high": "#222a3d",
+                      "on-tertiary-container": "#520fbb",
+                      "surface-variant": "#2d3449",
+                      "surface-dim": "#0b1326",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#004c69",
+                      "surface-container-highest": "#2d3449",
+                      "inverse-primary": "#00668a",
+                      "secondary-fixed": "#6bff8f",
+                      "on-tertiary-fixed": "#23005c",
+                      "background": "#0b1326",
+                      "primary-container": "#38bdf8",
+                      "surface-container-lowest": "#060e20",
+                      "tertiary-fixed-dim": "#d0bcff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-mobile": "20px",
+                      "unit": "8px",
+                      "container-padding-desktop": "48px",
+                      "gutter": "24px",
+                      "component-gap": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "data-point": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg-mobile": [
+                              "Sora"
+                      ],
+                      "headline-md": [
+                              "Sora"
+                      ],
+                      "body-lg": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Sora"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-point": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.4); /* surface-container with opacity */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .scan-line {
+            background: linear-gradient(to bottom, transparent, rgba(142, 213, 255, 0.5) 50%, transparent);
+            box-shadow: 0 0 10px rgba(142, 213, 255, 0.5);
+        }
+
+        .glow-ring {
+            border: 2px solid transparent;
+            background: linear-gradient(#0b1326, #0b1326) padding-box,
+                        linear-gradient(to right, #8ed5ff, #4ae176) border-box;
+            border-radius: 9999px;
+        }
+        
+        /* Utility to override background color for glow ring */
+        .glow-ring-bg {
+             background: linear-gradient(rgba(23, 31, 51, 0.8), rgba(23, 31, 51, 0.8)) padding-box,
+                        linear-gradient(to right, #8ed5ff, #4ae176) border-box;
+        }
+
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative overflow-x-hidden selection:bg-primary/30 selection:text-primary">
+<!-- Ambient Background Gradients for infinite depth -->
+<div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+<div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-primary/10 blur-[120px] opacity-50"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-secondary/10 blur-[100px] opacity-40"></div>
+<div class="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] rounded-full bg-tertiary/10 blur-[80px] opacity-30"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center px-container-padding-mobile md:px-container-padding-desktop h-[72px] bg-surface/60 dark:bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h1 class="font-headline-md text-headline-md tracking-tighter text-primary drop-shadow-[0_0_10px_rgba(142,213,255,0.5)]">KaamKarao AI</h1>
+</div>
+<div class="ml-auto flex items-center">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-[96px] pb-[120px] px-container-padding-mobile md:px-container-padding-desktop max-w-7xl mx-auto flex flex-col gap-gutter min-h-screen">
+<!-- Mission Progress Bar (Breadcrumbs style) -->
+<nav aria-label="Mission Progress" class="flex items-center gap-2 mb-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps opacity-60">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Request</span>
+</div>
+<div class="h-[1px] w-6 bg-white/10 mx-2"></div>
+<div class="flex items-center gap-2 text-primary font-label-caps text-label-caps drop-shadow-[0_0_8px_rgba(142,213,255,0.4)]">
+<span class="material-symbols-outlined text-[16px] animate-pulse">sync</span>
+<span>Understanding</span>
+</div>
+<div class="h-[1px] w-6 bg-white/10 mx-2"></div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps opacity-40">
+<span class="material-symbols-outlined text-[16px]">target</span>
+<span>Match</span>
+</div>
+</nav>
+<!-- Header / Scanner Area -->
+<section class="relative w-full rounded-xl glass-panel p-8 md:p-12 overflow-hidden flex flex-col items-center justify-center min-h-[240px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+<!-- Simulated Scanning Beam -->
+<div class="absolute inset-0 pointer-events-none flex flex-col">
+<div class="w-full h-[2px] scan-line animate-[scan_3s_ease-in-out_infinite_alternate]"></div>
+<!-- Add a style block just for the keyframes since it's hard to do in pure tailwind utilities without extending the config -->
+<style>
+                    @keyframes scan {
+                        0% { transform: translateY(0); }
+                        100% { transform: translateY(240px); }
+                    }
+                </style>
+</div>
+<!-- Central AI Indicator -->
+<div class="relative w-24 h-24 rounded-full glow-ring-bg flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(142,213,255,0.2)]">
+<span class="material-symbols-outlined text-[40px] text-primary" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<!-- Subtle inner pulse -->
+<div class="absolute inset-0 rounded-full border border-primary/30 animate-ping opacity-20"></div>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface text-center mb-2 tracking-tight">Analyzing Request...</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center max-w-2xl">
+                Deconstructing intent, mapping coordinates, and verifying temporal constraints to execute a precision match.
+            </p>
+</section>
+<!-- Extracted Data Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-component-gap">
+<!-- Service Pod (Large) -->
+<article class="col-span-1 md:col-span-6 glass-panel rounded-xl p-6 relative overflow-hidden group hover:bg-white/5 transition-colors duration-300">
+<!-- Top-down gradient border effect for featured cards -->
+<div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="flex items-start justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">hvac</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Identified Vector</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">AC Tech</h3>
+</div>
+</div>
+</div>
+<div class="bg-surface/50 rounded-lg p-4 border border-white/5 font-data-point text-data-point text-primary-fixed-dim">
+<span class="opacity-50 mr-2 text-on-surface-variant">&gt;_</span>
+                    SYSTEM.EXTRACT(DOMAIN="HVAC", REPAIR_TYPE="COOLING_UNIT")
+                </div>
+</article>
+<!-- Status Pod -->
+<article class="col-span-1 md:col-span-6 glass-panel rounded-xl p-6 relative flex flex-col justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4">Mission Status</p>
+<div class="flex items-center gap-3 inline-flex bg-secondary/10 border border-secondary/30 rounded-full px-4 py-2">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(74,225,118,0.8)] animate-pulse"></span>
+<span class="font-data-point text-data-point text-secondary tracking-wide">Intent Locked</span>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-end border-t border-white/10 pt-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Confidence Score</span>
+<span class="font-headline-md text-headline-md text-on-surface">98.4%</span>
+</div>
+</article>
+<!-- Coordinates Pod -->
+<article class="col-span-1 md:col-span-6 lg:col-span-4 glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary/70">my_location</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Coordinates</h3>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">G-13 Sector</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Islamabad, Capital Territory</span>
+</div>
+</article>
+<!-- Time Window Pod -->
+<article class="col-span-1 md:col-span-6 lg:col-span-4 glass-panel rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary/70">schedule</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Temporal Frame</h3>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">Tomorrow</span>
+<span class="font-body-md text-body-md text-on-surface-variant">10:00 AM AST</span>
+</div>
+</article>
+<!-- Complexity Pod -->
+<article class="col-span-1 md:col-span-12 lg:col-span-4 glass-panel rounded-xl p-6 relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[120px]">architecture</span>
+</div>
+<div class="flex items-center gap-3 mb-6 relative z-10">
+<span class="material-symbols-outlined text-primary/70">speed</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Job Complexity</h3>
+</div>
+<div class="flex items-end gap-2 relative z-10">
+<span class="font-headline-md text-headline-md text-on-surface">Level 2</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">/ Standard</span>
+</div>
+<div class="w-full bg-surface-container mt-4 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary w-2/5 h-full shadow-[0_0_8px_rgba(142,213,255,0.6)]"></div>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Action Area (Floating Canvas CTA) -->
+<div class="fixed bottom-0 left-0 w-full p-container-padding-mobile md:p-container-padding-desktop z-40 bg-gradient-to-t from-background via-background/90 to-transparent pb-24 md:pb-8 flex justify-center pointer-events-none">
+<button class="pointer-events-auto group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-headline-md text-headline-md tracking-wide rounded-xl shadow-[0_0_20px_rgba(142,213,255,0.3)] hover:shadow-[0_0_30px_rgba(142,213,255,0.5)] transition-all duration-300 transform hover:scale-[1.02] border border-white/20 overflow-hidden w-full md:w-auto md:min-w-[320px]">
+<!-- Button inner glow -->
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">radar</span>
+<span>Lock Target</span>
+</button>
+</div>
+<!-- BottomNavBar (Strict interpretation from JSON, suppressed on desktop via CSS, active determined implicitly as none match closely but let's assume this is a sub-flow so it shouldn't be here, but rule says BottomNavBar is in JSON. The prompt implies this is a transactional/linear screen ("AI Understanding Screen -> Find Provider"). 
+    Wait, the rules state: "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: Linear/Transactional". 
+    This screen is clearly a transactional/loading/progress screen ("Analyzing Request... -> Find Provider CTA"). 
+    Therefore, I MUST SUPPRESS the BottomNavBar to prioritize the content canvas. -->
+</body></html>

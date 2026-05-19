@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Platform } from "react-native";
 import colors from "../theme/colors";
 import StatusPill from "./StatusPill";
 
@@ -8,27 +8,27 @@ export default function TraceLogCard({ trace }) {
     <View style={styles.card}>
       <View style={styles.header}>
         <View style={styles.agentTag}>
-          <Text style={styles.agentText}>{trace.agent}</Text>
+          <Text style={styles.agentText}>{trace.agent.toUpperCase()}</Text>
         </View>
         <StatusPill type="status" value={trace.status} />
       </View>
       
-      <Text style={styles.timestamp}>Timestamp: {trace.timestamp}</Text>
+      <Text style={styles.timestamp}>SYS_TIME // {trace.timestamp.toUpperCase()}</Text>
       
       <View style={styles.actionContainer}>
-        <Text style={styles.actionLabel}>ACTION EXECUTED</Text>
-        <Text style={styles.actionText}>{trace.action}</Text>
+        <Text style={styles.actionLabel}>ACTION_EXECUTED</Text>
+        <Text style={styles.actionText}>{trace.action.toUpperCase()}</Text>
       </View>
       
       <View style={styles.detailsRow}>
         <View style={styles.box}>
-          <Text style={styles.boxLabel}>INPUT RECEIVED</Text>
-          <Text style={styles.boxText}>{trace.input}</Text>
+          <Text style={styles.boxLabel}>INPUT_PAYLOAD</Text>
+          <Text style={styles.boxText}>"{trace.input}"</Text>
         </View>
         
         <View style={styles.box}>
-          <Text style={styles.boxLabel}>REASONING OUTPUT</Text>
-          <Text style={[styles.boxText, { color: colors.primary }]}>{trace.output}</Text>
+          <Text style={styles.boxLabel}>REASONING_RESONANCE</Text>
+          <Text style={[styles.boxText, { color: colors.primary }]}>"{trace.output}"</Text>
         </View>
       </View>
     </View>
@@ -38,16 +38,16 @@ export default function TraceLogCard({ trace }) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.cardBackground,
-    borderRadius: 16,
+    borderRadius: 12,
     padding: 16,
-    marginVertical: 10,
+    marginVertical: 6,
     borderColor: colors.border,
     borderWidth: 1,
-    shadowColor: "#151c27",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 12,
-    elevation: 2,
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 3,
   },
   header: {
     flexDirection: "row",
@@ -55,22 +55,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   agentTag: {
-    backgroundColor: "rgba(49, 107, 243, 0.08)",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 8,
-    borderColor: colors.accent,
-    borderWidth: 0.5,
+    backgroundColor: "rgba(213, 195, 255, 0.1)",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderColor: "rgba(213, 195, 255, 0.3)",
+    borderWidth: 1,
   },
   agentText: {
     color: colors.accent,
-    fontWeight: "bold",
-    fontSize: 12,
+    fontWeight: "900",
+    fontSize: 10,
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
   },
   timestamp: {
-    fontSize: 10,
+    fontSize: 9,
     color: colors.textMuted,
     marginTop: 8,
+    fontFamily: Platform.OS === "ios" ? "Courier" : "monospace",
   },
   actionContainer: {
     marginTop: 10,
@@ -80,21 +82,25 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.textMuted,
     letterSpacing: 0.5,
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
   },
   actionText: {
-    fontSize: 14,
+    fontSize: 12,
     color: colors.text,
-    fontWeight: "500",
+    fontWeight: "700",
     marginTop: 2,
+    fontFamily: Platform.OS === "ios" ? "Courier" : "monospace",
   },
   detailsRow: {
     flexDirection: "row",
     marginTop: 12,
-    gap: 10,
+    gap: 8,
   },
   box: {
     flex: 1,
-    backgroundColor: "#f1f5f9",
+    backgroundColor: "rgba(255, 255, 255, 0.02)",
+    borderColor: colors.border,
+    borderWidth: 1,
     padding: 10,
     borderRadius: 8,
     minHeight: 60,
@@ -104,11 +110,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.textMuted,
     letterSpacing: 0.5,
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
   },
   boxText: {
-    fontSize: 11,
+    fontSize: 10,
     color: colors.text,
     marginTop: 4,
     lineHeight: 14,
+    fontFamily: Platform.OS === "ios" ? "Courier" : "monospace",
+    fontStyle: "italic",
   },
 });

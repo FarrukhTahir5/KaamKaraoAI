@@ -114,28 +114,35 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+      <StatusBar barStyle="light-content" backgroundColor={colors.backgroundLowest} />
       
-      {/* Dynamic Navigation Header */}
+      {/* Dynamic Futuristic Navigation Header */}
       <View style={styles.headerBar}>
         {showBackButton ? (
           <TouchableOpacity activeOpacity={0.7} onPress={handleBack} style={styles.backBtn}>
-            <Text style={styles.backText}>← Back</Text>
+            <Text style={styles.backText}>← SYSTEM.BACK</Text>
           </TouchableOpacity>
         ) : (
-          <View style={styles.emptyHeader} />
+          <View style={styles.headerTelemetryLeft}>
+            <Text style={styles.telemetryIcon}>🛰️</Text>
+            <Text style={styles.telemetryStatusGreen}>ONLINE</Text>
+          </View>
         )}
         
-        <Text style={styles.headerTitle}>
-          {currentScreen.replace("_", " ").toUpperCase()}
-        </Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.headerTitle}>
+            {currentScreen === "home" ? "KAAMKARAO.AI" : `MISSION_${currentScreen.toUpperCase()}`}
+          </Text>
+        </View>
         
         {currentScreen !== "home" ? (
           <TouchableOpacity activeOpacity={0.7} onPress={handleRestart} style={styles.resetBtn}>
-            <Text style={styles.resetText}>Restart</Text>
+            <Text style={styles.resetText}>TERMINATE</Text>
           </TouchableOpacity>
         ) : (
-          <View style={styles.emptyHeader} />
+          <View style={styles.headerTelemetryRight}>
+            <Text style={styles.telemetryTime}>UTC +5:00</Text>
+          </View>
         )}
       </View>
 
@@ -151,50 +158,88 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   headerBar: {
-    height: 56,
-    backgroundColor: colors.cardBackground,
+    height: 64,
+    backgroundColor: colors.backgroundLowest,
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 16,
-    shadowColor: "#151c27",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
-    shadowRadius: 6,
-    elevation: 1,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
   },
   backBtn: {
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: "#f1f5f9",
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.1)",
   },
   backText: {
-    color: colors.text,
-    fontSize: 12,
+    color: colors.primary,
+    fontSize: 10,
     fontWeight: "bold",
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
+    letterSpacing: 0.5,
+  },
+  titleContainer: {
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerTitle: {
     fontSize: 12,
     fontWeight: "900",
     color: colors.primary,
-    letterSpacing: 1,
+    letterSpacing: 1.5,
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
+    textShadowColor: "rgba(142, 213, 255, 0.5)",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 6,
   },
   resetBtn: {
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: "rgba(186, 26, 26, 0.08)",
+    backgroundColor: "rgba(255, 180, 171, 0.1)",
+    borderWidth: 1,
+    borderColor: "rgba(255, 180, 171, 0.2)",
   },
   resetText: {
     color: colors.error,
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "bold",
+    fontFamily: Platform.OS === "ios" ? "CourierNewPS-BoldMT" : "monospace",
   },
-  emptyHeader: {
-    width: 60,
+  headerTelemetryLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    width: 80,
+  },
+  telemetryIcon: {
+    fontSize: 12,
+  },
+  telemetryStatusGreen: {
+    fontSize: 9,
+    color: colors.success,
+    fontWeight: "bold",
+    fontFamily: Platform.OS === "ios" ? "Courier" : "monospace",
+    letterSpacing: 0.5,
+  },
+  headerTelemetryRight: {
+    alignItems: "flex-end",
+    justifyContent: "center",
+    width: 80,
+  },
+  telemetryTime: {
+    fontSize: 9,
+    color: colors.textMuted,
+    fontFamily: Platform.OS === "ios" ? "Courier" : "monospace",
   },
   content: {
     flex: 1,
