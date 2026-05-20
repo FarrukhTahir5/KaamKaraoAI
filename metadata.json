@@ -1,0 +1,6 @@
+{
+  "name": "KaamKarao AI",
+  "description": "Mobile-first AI assistant for booking local informal services in Pakistan, resolving Urdu/Roman Urdu natural language intents automatically.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

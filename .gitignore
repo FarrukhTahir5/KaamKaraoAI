@@ -1,33 +1,18 @@
-# Logs and temporary files
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.iml
+.gradle
+.kotlin
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
 .DS_Store
-
-# Mobile dependencies and builds
-node_modules/
-.expo/
-web-build/
-dist/
-expo-env.d.ts
-
-# Python virtual envs and caches
-__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-venv/
-.venv/
-env/
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
 .env
-
-# Editor settings
-.vscode/
-.idea/
-
-# Transactional mock DB logs (keep static data registries committed!)
-backend/app/data/bookings.json
-backend/app/data/requests.json
-backend/app/data/reminders.json
-backend/app/data/agent_logs.json
+debug.keystore
